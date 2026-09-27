@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+        .weather {
+            font-family: "Afacad", sans-serif;
+            font-weight: bold;
+            position: absolute; /*тут значит этот элемент туда-то внутри того-то предмета*/
+            top: 30px;
+            right: 30px;
+
+            display: flex; /*а тут как расположить элементы относительно друг друга*/
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .temperature {
+            font-size: 32px;
+        }
+        .city {
+            color: #6E6CDF;
+            font-size: 20px;
+        }
+
+        .center {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%); /* это нужно чтобы элемент располагался сам ровно по центру, а не его какой-то  край толтко*/
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            gap : 55.65px;
+
+        }
+        .upper_center {
+            text-align: center;
+            font-family: Afacad, sans-serif;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .time {
+            font-size : 74px;
+        }
+
+        .greeting {
+            font-size : 36px;
+            color: #6E6CDF;
+        }
+
+
+        .lower_center {
+            display: flex;
+            gap : 55.65px;
+            flex-direction: column;
+            align-items: center;
+        }
+        .search {
+            width: min(500px, 90vw);
+            height: 60px;
+            position: relative;
+        }
+
+
+        .search-background {
+            width: 100%;
+            height: 100%;
+        }
+
+        .search-icon {
+            position: absolute;
+
+            width: 24px;
+            height: 24px;
+
+            left: 20px;
+            top: 50%;
+
+            transform: translateY(-50%);
+        }
+
+        .search-text {
+            position: absolute;
+
+            left: 55px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-family: Afacad, sans-serif;
+            font-size: 20px;
+            color: #9E9E9E;
+        }
+
+        .icons {
+            display: flex;
+            gap: 27.83px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+
+            position: relative;
+
+            background: white;
+            border-radius: 15px;
+        }
+        .icon img:first-child {
+            width: 60px;
+            height: 60px;
+        }
+
+        .icon img:last-child {
+            position: absolute;
+
+            width: 30px;
+            height: 30px;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+        }
+
+        @media (max-width: 1400px) {
+            .time {
+                font-size: 64px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .weather {
+                top: 20px;
+                right: 20px;
+            }
+            .temperature {
+                font-size: 24px;
+            }
+            .city {
+                font-size: 16px;
+            }
+
+            .center {
+                gap: 40px;
+                top: 45%;
+            }
+
+            .upper_center {
+                gap: 5px;
+            }
+
+            .time {
+                font-size: 54px;
+            }
+
+            .greeting {
+                font-size: 24px;
+            }
+
+            .search {
+                width: 90vw;
+                height: 50px;
+            }
+
+            .search-icon {
+                width: 20px;
+                height: 20px;
+                left: 15px;
+            }
+
+            .search-text {
+                left: 45px;
+                font-size: 16px;
+            }
+
+            .lower_center {
+                gap: 40px;
+                width: 100%;
+            }
+
+            .icons {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                padding: 0 10px;
+            }
+
+            .icon {
+                width: 50px;
+                height: 50px;
+                border-radius: 12px;
+            }
+
+            .icon img:first-child {
+                width: 50px;
+                height: 50px;
+            }
+
+            .icon img:last-child {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="weather">
+    <p class="temperature"> 36°</p>
+    <p class = "city">Ahmedobad</p>
+</div>
+<div class="center">
+    <div class = "upper_center">
+        <h1 class = "time">09:11:01</h1>
+        <p class = "greeting">Good Morning, Saad.</p>
+    </div>
+    <div class="lower_center">
+        <div class="search">
+            <img class="search-background" src = "img/searchbackground.svg" alt="search_background">
+            <img class="search-icon" src = "img/search.svg" alt="Search">
+            <p class="search-text">Search</p>
+        </div>
+        <ul class="icons">
+            <li class="icon">
+                <img class="youtube-background" src="img/empty.svg">
+                <img class="youtube-icon" src="img/youtube.svg">
+            </li>
+
+            <li class = "icon">
+                <img class="chatgpt-background" src="img/empty.svg">
+                <img class="chatgpt-icon" src="img/chatgpt.svg">
+            </li>
+
+            <li class = "icon">
+                <img class="geeksforgeeks-background" src="img/empty.svg">
+                <img class="geeksforgeeks-icon" src="img/geeksforgeeks.svg">
+            </li>
+
+            <li class = "icon">
+                <img class="deepseek-background" src="img/empty.svg">
+                <img class="deepseek-icon" src="img/deepseek.svg">
+            </li>
+
+            <li class = "icon">
+                <img class="github-background" src="img/empty.svg">
+                <img class="github-icon" src="img/github.svg">
+            </li>
+
+            <li class = "icon">
+                <img class="linkedIn-background" src="img/empty.svg">
+                <img class="linkedIn-icon" src="img/linkedIn.svg">
+            </li>
+
+            <li class = "icon">
+                <img class="plus-background" src="img/empty.svg">
+                <img class="plus-sign" src="img/plus-sign.svg">
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
