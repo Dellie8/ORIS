@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Getting started | Knowledge Base HTML Template</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+            --ink:     #111827;
+            --sub:     #6b7280;
+            --line:    #e5e7eb;
+            --accent:  #0ea5e9;
+            --bg:      #ffffff;
+            --side-bg: #f9fafb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Wix Madefor Display", ui-sans-serif, system-ui,
+            -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color .15s ease;
+        }
+
+        img { max-width: 100%; }
+        button { font-family: inherit; }
+
+        header.top {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: #fff;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .top-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            padding: 14px 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+        }
+
+        .logo img { width: 24px; height: 24px; }
+
+        nav.main-nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            font-size: 14px;
+            color: black;
+            flex: 1;
+            font-weight: 600;
+        }
+
+        nav.main-nav a { padding: 6px 0; }
+        
+
+        .dropdown { position: relative; cursor: pointer; }
+        .dropdown > span::after { content: " ▾"; font-size: 11px; }
+
+        .dropdown .panel {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 10px;
+            min-width: 200px;
+            padding: 8px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            box-shadow: 0 10px 24px rgba(0,0,0,.08);
+        }
+
+        .dropdown.open .panel { display: block; }
+
+        .dropdown .panel a {
+            display: block;
+            padding: 8px 10px;
+            border-radius: 6px;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .dropdown .panel a:hover {
+            background: #f3f4f6;
+            color: var(--accent);
+        }
+
+
+        .top-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 370px;
+            margin-right: -50px;
+            padding: 8px 10px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            color: var(--sub);
+            font-size: 13px;
+            cursor: text;
+        }
+
+        .search-box:focus-within {
+            border-color: #d1d5db;
+            box-shadow: 0 0 0 2px #d1d5db;
+        }
+
+        .search-box svg {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+            color: var(--sub);
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 13px;
+            font-family: inherit;
+            color: var(--ink);
+            background: transparent;
+        }
+
+        .search-box input::placeholder { color: #4b5563; }
+
+        .search-kbd {
+            flex-shrink: 0;
+            font-size: 11px;
+            color: #9ca3af;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 1px 5px;
+        }
+
+        .btn-contact {
+            background: var(--accent);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .btn-contact:hover { background: #0284c7; }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr 210px;
+            align-items: start;
+        }
+        
+
+        aside.side-left {
+            position: sticky;
+            top: 57px;
+            height: calc(100vh - 57px);
+            overflow-y: auto;
+            padding: 28px 20px;
+            //*background: var(--side-bg);
+            /*border-right: 1px solid var(--line);*/
+            color: white;
+        }
+
+        .side-group { margin-bottom: 22px; }
+
+        .side-group h4 {
+            margin: 0 0 8px;
+            font-size: 15px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .side-group ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .side-group li a {
+            display: block;
+            margin-left: -10px;
+            padding: 6px 0 6px 10px;
+            border-left: 2px solid transparent;
+            color: #4b5563;
+            font-size: 14px;
+        }
+
+        .side-group li a:hover { color: var(--accent); }
+
+        .side-group li a.current {
+            color: var(--accent);
+            font-weight: 600;
+            border-left-color: var(--accent);
+        }
+
+        main.content {
+            min-width: 0;
+            padding: 32px 40px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 6px;
+            color: var(--sub);
+            font-size: 13px;
+        }
+
+        h1.title {
+            margin: 0 0 20px;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        
+
+        .author-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .author-row img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #ddd;
+        }
+
+        .author-name { font-weight: 600; font-size: 14px; }
+        .author-meta { color: var(--sub); font-size: 13px; }
+
+        .follow-btn {
+            border: none;
+            margin-left: auto;
+            padding: 7px 16px;
+            background-color: rgba(240, 249, 255, 0.5);
+            color: #0ea5e9;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .follow-btn:hover {
+            background-color: rgb(59, 130, 246, 0.1);
+        }
+        
+
+        .article p { margin: 0 0 16px; color: #374151; }
+
+        .article h2 { margin: 36px 0 14px; font-size: 22px; font-weight: 700; }
+        .article h3 { margin: 28px 0 10px; font-size: 18px; font-weight: 700; }
+        .article h4 { margin: 22px 0 8px;  font-size: 15px; font-weight: 700; }
+
+        .article ol {
+            margin: 0 0 16px;
+            padding-left: 20px;
+            color: #374151;
+        }
+
+        .article ol li { margin-bottom: 4px; }
+
+        hr {
+            margin: 32px 0;
+            border: none;
+            border-top: 1px solid var(--line);
+        }
+        
+
+        pre.code {
+            margin: 0 0 18px;
+            padding: 18px 20px;
+            background: #1f2937;
+            color: #e5e7eb;
+            border-radius: 10px;
+            font-size: 13px;
+            line-height: 1.7;
+            overflow-x: auto;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        }
+
+        pre.code .kw { color: white; }
+        
+
+        table {
+            width: 100%;
+            margin: 0 0 20px;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        th { color: var(--sub); font-weight: 600; font-size: 13px; }
+        
+
+        .prevnext {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .prevnext a {
+            flex: 1;
+            padding: 14px 16px;
+        }
+        
+
+        .prevnext .val { display: block; margin-bottom: 4px; color: #374151; font-size: 12px; }
+        .prevnext .lbl { font-weight: 600; font-size: 14px; }
+        .prevnext .next { text-align: right; }
+        
+
+        .helpful {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+            text-align: center;
+        }
+
+        .helpful h4 {
+            margin: 0 0 10px; font-size: 14px; font-weight: 600; 
+        }
+
+        .helpful .btns {
+            display: flex; gap: 10px; margin-bottom: 12px; justify-content: center;
+        }
+
+        .helpful .btns button {
+            padding: 6px 18px;
+            border: none;
+            border-radius: 8px;;
+            font-size: 13px;
+            cursor: pointer;
+            background-color: rgba(240, 249, 255, 0.5);
+            color: #0ea5e9;
+        }
+        
+
+        .helpful .btns button:hover {
+            background-color: rgb(59, 130, 246, 0.1);
+        }
+
+        .helpful .btns button.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .helpful .btns button {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .helpful .btns button svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .helpful .more a {
+            color: var(--ink);          
+            font-weight: 400;
+            text-decoration: underline; 
+        }
+
+        .helpful .more a:hover {
+            color: var(--accent);   
+        }
+        
+
+        .callout-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 22px 0 30px;
+        }
+
+        .callout-card {
+            padding: 28px 32px;
+        }
+
+        .callout-card h4 {
+            margin: 0 0 10px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .callout-card p {
+            margin: 0;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .callout-card.amber    { background: #fefce8; }
+        .callout-card.amber h4 { color: #713f12; }
+        .callout-card.amber p  { color: #a16207; }
+
+        .callout-card.sky      { background: #eff6ff; }
+        .callout-card.sky h4   { color: #1e3a8a; }
+        .callout-card.sky p    { color: #1d4ed8; }
+
+        .callout-card.emerald      { background: #f0fdf4; }
+        .callout-card.emerald h4   { color: #14532d; }
+        .callout-card.emerald p    { color: #15803d; }
+
+        .callout-card.red      { background: #fef2f2; }
+        .callout-card.red h4   { color: #7f1d1d; }
+        .callout-card.red p    { color: #b91c1c; }
+
+        @media (max-width: 600px) {
+            .callout-grid { grid-template-columns: 1fr; }
+        }
+
+        
+        aside.side-right {
+            position: sticky;
+            top: 57px;
+            height: calc(100vh - 57px);
+            overflow-y: auto;
+            padding: 32px 20px;
+            font-size: 13px;
+        }
+
+        aside.side-right h5 {
+            margin: 0 0 10px;
+            font-size: 12px;
+            font-weight: 700;
+            color: black;
+        }
+
+        .toc ol { list-style: none; margin: 0; padding: 0; }
+        .toc > ol > li { margin-bottom: 10px; }
+
+        .toc > ol > li > a {
+            display: block;
+            margin-bottom: 4px;
+            /*font-weight: 600;*/
+            color:  #6b7280;
+        }
+
+        .toc ul { list-style: none; margin: 0; padding-left: 12px; }
+        .toc ul li a { display: block; padding: 3px 0; color: #6b7280; }
+        .toc a:hover { color: #111827; }
+        
+
+        footer {
+            margin-top: 24px;
+            background: var(--side-bg);
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 48px 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr) 1.4fr;
+            gap: 24px;
+        }
+
+        .footer-inner h5 { margin: 0 0 14px; font-size: 13px; font-weight: 700; }
+        .footer-inner ul { list-style: none; margin: 0; padding: 0; }
+        .footer-inner li { margin-bottom: 8px; }
+        .footer-inner a  { color: #4b5563; font-size: 13px; }
+        .footer-inner a:hover { color: var(--accent); }
+
+        .news p {
+            margin: 0 0 14px;
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        .news form { display: flex; gap: 8px; }
+
+        .news input {
+            flex: 1;
+            padding: 9px 12px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .news button {
+            padding: 9px 16px;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .news button:hover { background: #0284c7; }
+
+        .bottom-bar { border-top: 1px solid var(--line); }
+
+        .bottom-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #6b7280;
+            font-size: 13px;
+        }
+        
+        .socials {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+        }
+
+        .socials a {
+            display: flex;
+            color: #9ca3af;
+        }
+
+        .socials svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .socials a:hover { color: #4b5563 }
+        
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #d1d5db transparent;
+        }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 8px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+        pre.code { scrollbar-color: #4b5563 transparent; }
+        pre.code::-webkit-scrollbar { height: 6px; }
+        pre.code::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 6px; }
+        
+
+        @media (max-width: 1024px) {
+            .wrap { grid-template-columns: 220px 1fr; }
+            aside.side-right { display: none; }
+        }
+
+        @media (max-width: 800px) {
+            nav.main-nav { display: none; }
+            .menu-toggle { display: block; }
+            .search-box { width: 160px; }
+
+            .wrap { grid-template-columns: 1fr; }
+
+            aside.side-left {
+                display: none;
+                position: fixed;
+                top: 57px; left: 0; right: 0; bottom: 0;
+                width: auto;
+                height: auto;
+                z-index: 15;
+            }
+
+            aside.side-left.open { display: block; }
+
+            main.content { padding: 24px 20px; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+
+<header class="top">
+    <div class="top-inner">
+
+        <a class="logo" href="#">
+            <img src="https://html-knowledge.netlify.app/img/logo-mark.svg" alt="Knowledge">
+            KNOWLEDGE
+        </a>
+
+        <nav class="main-nav">
+            <a href="#" class="active">Document</a>
+
+            <div class="dropdown" id="dd">
+                <span>Dropdown</span>
+                <div class="panel">
+                    <a href="#">Application setting</a>
+                    <a href="#">Product features</a>
+                    <a href="#">Free resources</a>
+                    <a href="#">Video tutorials</a>
+                </div>
+            </div>
+
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="top-right">
+            <label class="search-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" placeholder="Search">
+            </label>
+
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle main menu">☰</button>
+    </div>
+</header>
+
+<div class="wrap">
+    
+    <aside class="side-left" id="sideLeft">
+
+        <div class="side-group">
+            <h4>Introduction</h4>
+            <ul>
+                <li><a href="#">Overview</a></li>
+                <li><a href="#" class="current">Getting started</a></li>
+                <li><a href="#">Installation</a></li>
+            </ul>
+        </div>
+
+        <div class="side-group">
+            <h4>Core concepts</h4>
+            <ul>
+                <li><a href="#">Understanding flow</a></li>
+                <li><a href="#">Predicting user journey</a></li>
+                <li><a href="#">Basics of design</a></li>
+                <li><a href="#">Introduction to development</a></li>
+                <li><a href="#">The load effect</a></li>
+            </ul>
+        </div>
+
+        <div class="side-group">
+            <h4>Advanced guides</h4>
+            <ul>
+                <li><a href="#">Writing plugins</a></li>
+                <li><a href="#">Neuralink integration</a></li>
+                <li><a href="#">Temporal paradoxes</a></li>
+                <li><a href="#">Testing blocks</a></li>
+                <li><a href="#">Compile-time caching</a></li>
+                <li><a href="#">Predictive data generation</a></li>
+            </ul>
+        </div>
+
+        <div class="side-group">
+            <h4>API reference</h4>
+            <ul>
+                <li><a href="#">FetchAdvance.load()</a></li>
+                <li><a href="#">GetAdvance.get()</a></li>
+                <li><a href="#">UploadAdvance.load()</a></li>
+                <li><a href="#">LoadAdvance.push()</a></li>
+            </ul>
+        </div>
+
+        <div class="side-group">
+            <h4>Contributing</h4>
+            <ul>
+                <li><a href="#">How to contribute</a></li>
+                <li><a href="#">Architecture guide</a></li>
+                <li><a href="#">Design principles</a></li>
+            </ul>
+        </div>
+
+    </aside>
+
+    <main class="content">
+
+        <div class="breadcrumb" style="color: #0ea5e9; font-weight: bold">Introduction</div>
+        <h1 class="title">Getting started</h1>
+
+        <div class="author-row">
+            <img src="https://html-knowledge.netlify.app/img/joshua.jpg" alt="Joshua Birdman">
+            <div>
+                <div class="author-name">Joshua Birdman</div>
+                <div class="author-meta">Created: May 06, 2023 - Updated: Apr 26, 2023</div>
+            </div>
+            <button class="follow-btn" id="followBtn">Follow</button>
+        </div>
+
+        <article class="article">
+
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur culpa qui officia deserunt.</p>
+
+            <h2 id="quick-start">Quick start</h2>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur.</p>
+
+            <h3 id="installing-dependencies">Installing dependencies</h3>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.</p>
+
+            <pre class="code">plugins: [
+  <span class="kw">require('@tailwindcss/forms')</span>,
+  <span class="kw">require('@tailwindcss/typography')</span>,
+]</pre>
+
+            <p>Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.</p>
+
+            <h3 id="configuring-the-library">Configuring the library</h3>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.</p>
+            <p>Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.</p>
+
+            <div class="callout-grid">
+                <div class="callout-card amber">
+                    <h4>Consequatur et cum atque mollitia</h4>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur culpa qui officia deserunt mollit laborum.</p>
+                </div>
+                <div class="callout-card sky">
+                    <h4>Consequatur et cum atque mollitia</h4>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur culpa qui officia deserunt mollit laborum.</p>
+                </div>
+                <div class="callout-card emerald">
+                    <h4>Consequatur et cum atque mollitia</h4>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur culpa qui officia deserunt mollit laborum.</p>
+                </div>
+                <div class="callout-card red">
+                    <h4>Consequatur et cum atque mollitia</h4>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur culpa qui officia deserunt mollit laborum.</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <h2 id="basic-usage">Basic usage</h2>
+            <p>Praesentium laudantium magni. Consequatur reiciendis aliquid nihil iusto ut in et. Quisquam ut et aliquid occaecati. Culpa veniam aut et voluptates amet perspiciatis. Qui exercitationem in qui. Vel qui dignissimos sit quae distinctio.</p>
+
+            <h3 id="your-first-cache">Your first cache</h3>
+            <p>Minima vel non iste debitis. Consequatur repudiandae et quod accusamus sit molestias consequatur aperiam. Et sequi ipsa eum voluptatibus ipsam. Et quisquam ut.</p>
+            <p>Qui quae esse aspernatur fugit possimus. Quam sed molestiae temporibus. Eum perferendis dignissimos provident ea et. Et repudiandae quasi accusamus consequatur dolore nobis. Quia reiciendis necessitatibus a blanditiis iste quia. Ut quis et amet praesentium sapiente.</p>
+
+            <h4>Change your password</h4>
+            <ol>
+                <li>Click your team name to open the Team Menu.</li>
+                <li>Select Profile &amp; account. This will open your profile on the right side of your screen.</li>
+                <li>Under your name, click Account Settings. This will open your Account settings.</li>
+                <li>By Password, click expand.</li>
+                <li>Enter your Current Password, and then a New Password.</li>
+                <li>Click Save Password.</li>
+            </ol>
+            <p>Ea est autem fugiat velit esse a alias earum. Dolore non amet soluta eos libero est. Consequatur qui aliquam qui odit eligendi ut impedit illo dignissimos.</p>
+            <p>Ut dolore qui aut nam. Natus temporibus nisi voluptatum labore est ex error vel officia. Vero repellendus ut. Suscipit voluptate et placeat. Eius quo corporis ab et consequatur quisquam. Nihil officia facere dolorem occaecati alias deleniti deleniti in.</p>
+
+            <table>
+                <thead><tr><th>Name</th><th>Title</th><th>Email</th><th>Role</th></tr></thead>
+                <tbody>
+                <tr><td>John Smith</td><td>Front-end Developer</td><td>johnsmith@example.com</td><td>Member</td></tr>
+                <tr><td>John Smith</td><td>Front-end Developer</td><td>johnsmith@example.com</td><td>Member</td></tr>
+                <tr><td>John Smith</td><td>Front-end Developer</td><td>johnsmith@example.com</td><td>Member</td></tr>
+                </tbody>
+            </table>
+
+            <h3 id="adding-middleware">Adding middleware</h3>
+            <p>Officia nobis tempora maiores id iusto magni reprehenderit velit. Quae dolores inventore molestiae perspiciatis aut. Quis sequi officia quasi rem officiis officiis. Nesciunt ut cupiditate. Sunt aliquid explicabo enim ipsa eum recusandae. Vitae sunt eligendi et non beatae minima aut.</p>
+            <p>Harum perferendis aut qui quibusdam tempore laboriosam voluptatum qui sed. Amet error amet totam exercitationem aut corporis accusantium dolorum. Perspiciatis aut animi et. Sed unde error ut aut rerum.</p>
+            <p>Ut quo libero aperiam mollitia est repudiandae quaerat corrupti explicabo. Voluptas accusantium sed et doloribus voluptatem fugiat a mollitia. Numquam est magnam dolorem asperiores fugiat. Soluta et fuga amet alias temporibus quasi velit. Laudantium voluptatum perspiciatis doloribus quasi facere. Eveniet deleniti veniam et quia veritatis minus veniam perspiciatis.</p>
+
+            <hr>
+
+            <h2 id="getting-help">Getting help</h2>
+            <p>Consequuntur et aut quisquam et qui consequatur eligendi. Necessitatibus dolorem sit. Excepturi cumque quibusdam soluta ullam rerum voluptatibus. Porro illo sequi consequatur nisi numquam nisi autem. Ut necessitatibus aut. Veniam ipsa voluptatem sed.</p>
+
+            <h3 id="submit-an-issue">Submit an issue</h3>
+            <p>Inventore et aut minus ut voluptatem nihil commodi doloribus consequatur. Facilis perferendis nihil sit aut aspernatur iure ut dolores et. Aspernatur odit dignissimos. Aut qui est sint sint.</p>
+            <p>Facere aliquam qui. Dolorem officia ipsam adipisci qui molestiae. Error voluptatem reprehenderit ex.</p>
+            <p>Consequatur enim quia maiores aperiam et ipsum dicta. Quam ut sit facere sit quae. Eligendi veritatis aut ut veritatis iste ut adipisci illo.</p>
+
+            <h3 id="join-the-community">Join the community</h3>
+            <p>Praesentium facilis iste aliquid quo quia a excepturi. Fuga reprehenderit illo sequi voluptatem voluptatem omnis. Id quia consequatur rerum consectetur eligendi et omnis. Voluptates iusto labore possimus provident praesentium id vel harum quisquam. Voluptatem provident corrupti.</p>
+            <p>Eum et ut. Qui facilis est ipsa. Non facere quia sequi commodi autem. Dicta autem sit sequi omnis impedit. Eligendi amet dolorum magnam repudiandae in a.</p>
+            <p>Molestiae iusto ut exercitationem dolorem unde iusto tempora atque nihil. Voluptatem velit facere laboriosam nobis ea. Consequatur rerum velit ipsum ipsam. Et qui saepe consequatur minima laborum tempore voluptatum et. Quia eveniet eaque sequi consequatur nihil eos.</p>
+
+        </article>
+
+        <div class="prevnext">
+            <a class="prev" href="#"><span class="lbl">Previous</span><span class="val">← Getting started</span></a>
+            <a class="next" href="#"><span class="lbl">Next</span><span class="val">Understanding caching →</span></a>
+        </div>
+
+        <div class="helpful">
+            <h4>Was this article helpful?</h4>
+            <div class="btns">
+                <button data-fb="yes">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 13 10 18 19 7"/></svg>
+                    Yes
+                </button>
+                <button data-fb="no">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+                    No
+                </button>
+            </div>
+            <div class="more">Have more questions? <a href="#">Submit a request.</a></div>
+        </div>
+
+    </main>
+    <aside class="side-right">
+        <h5 >On this page</h5>
+        <div class="toc">
+            <ol>
+                <li>
+                    <a href="#quick-start">Quick start</a>
+                    <ul>
+                        <li><a href="#installing-dependencies">Installing dependencies</a></li>
+                        <li><a href="#configuring-the-library">Configuring the library</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#basic-usage">Basic usage</a>
+                    <ul>
+                        <li><a href="#your-first-cache">Your first cache</a></li>
+                        <li><a href="#adding-middleware">Adding middleware</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#getting-help">Getting help</a>
+                    <ul>
+                        <li><a href="#submit-an-issue">Submit an issue</a></li>
+                        <li><a href="#join-the-community">Join the community</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </aside>
+
+</div>
+
+<footer>
+    <div class="footer-inner">
+
+        <div>
+            <h5>Solutions</h5>
+            <ul>
+                <li><a href="#">Marketing</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Commerce</a></li>
+                <li><a href="#">Insights</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h5>Support</h5>
+            <ul>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Guides</a></li>
+                <li><a href="#">API Status</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h5>Company</h5>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Press</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h5>Legal</h5>
+            <ul>
+                <li><a href="#">Claim</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+            </ul>
+        </div>
+
+        <div class="news">
+            <h5>Subscribe to our newsletter</h5>
+            <p>The latest news, articles, and resources, sent to your inbox weekly.</p>
+            <form onsubmit="return false;">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="bottom-bar">
+        <div class="bottom-inner">
+            <div>© 2020 Awesome Company, Ltd. All rights reserved.</div>
+            <div class="socials">
+                    <a class="socials_icon" href="#">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                        </svg>
+                    </a>
+                    <a class="socials_icon" href="#">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a class="socials_icon" href="#">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a class="socials_icon" href="#">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a class="socials_icon" href="#">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
