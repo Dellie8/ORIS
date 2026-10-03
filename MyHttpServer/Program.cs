@@ -1,4 +1,5 @@
-﻿using MyHttpServer;
+﻿using MyHttpServer.Framework.Configuration;
+using MyHttpServer;
 using System.Net;
 using System.Text.Json;
 using System.Text;
@@ -8,10 +9,9 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        string settingsText = File.ReadAllText("settings.json");
-        Settings settings = JsonSerializer.Deserialize<Settings>(settingsText); //создаем объект Settings и заполняем значениями из JSON
-        HttpServer httpServer = new HttpServer(settings.Serverr.Host, settings.Serverr.Port, settings.Serverr.Path);
-        httpServer.Start();  
+        ConfigurationManager config = ConfigurationManager.GetInstance();
+        HttpServer httpServer = new HttpServer(config.SettingsModel.Serverr.Host, config.SettingsModel.Serverr.Port, config.SettingsModel .Serverr.Path);
+        var task = httpServer.Start();
         Console.WriteLine("Введите 'stop'");
         string command = Console.ReadLine();
         if (command?.ToLower() == "stop")

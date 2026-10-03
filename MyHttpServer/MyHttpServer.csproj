@@ -10,15 +10,13 @@
     <None Update="settings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="search-engine.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="img\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Framework\Http\" />
+    <Content Include="static\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="static\search-engine.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     </ItemGroup>
 
 </Project>
